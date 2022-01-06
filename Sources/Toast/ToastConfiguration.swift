@@ -8,11 +8,16 @@
 import Foundation
 import UIKit
 
+public enum ToastPosition {
+	case top
+	case bottom
+}
+
 public struct ToastConfiguration {
     public let autoHide: Bool
     public let displayTime: TimeInterval
     public let animationTime: TimeInterval
-    
+	public let position: ToastPosition
     public let view: UIView?
     
     
@@ -26,11 +31,13 @@ public struct ToastConfiguration {
         autoHide: Bool = true,
         displayTime: TimeInterval = 4,
         animationTime: TimeInterval = 0.2,
+		position: ToastPosition = .top,
         attachTo view: UIView? = nil
     ) {
         self.autoHide = autoHide
         self.displayTime = displayTime
         self.animationTime = animationTime
+		self.position = position
         self.view = view
     }
 }

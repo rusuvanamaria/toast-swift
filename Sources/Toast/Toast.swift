@@ -18,10 +18,16 @@ public class Toast {
     
     public let view: ToastView
 
-    private let config: ToastConfiguration
+	internal let config: ToastConfiguration
     
     private var initialTransform: CGAffineTransform {
-        return CGAffineTransform(scaleX: 0.9, y: 0.9).translatedBy(x: 0, y: -100)
+		switch config.position {
+		case .top:
+			return CGAffineTransform(scaleX: 0.9, y: 0.9).translatedBy(x: 0, y: -100)
+
+		case .bottom:
+			return CGAffineTransform(scaleX: 0.9, y: 0.9).translatedBy(x: 0, y: 100)
+		}
     }
         
     /// Creates a new Toast with the default Apple style layout with a title and an optional subtitle.

@@ -46,9 +46,20 @@ public class AppleToastView : UIView, ToastView {
             widthAnchor.constraint(greaterThanOrEqualToConstant: minWidth),
             leadingAnchor.constraint(greaterThanOrEqualTo: superview.leadingAnchor, constant: 10),
             trailingAnchor.constraint(lessThanOrEqualTo: superview.trailingAnchor, constant: -10),
-            topAnchor.constraint(equalTo: superview.layoutMarginsGuide.topAnchor, constant: 0),
             centerXAnchor.constraint(equalTo: superview.centerXAnchor)
         ])
+
+		switch toast.config.position {
+		case .top:
+			NSLayoutConstraint.activate([
+				topAnchor.constraint(equalTo: superview.layoutMarginsGuide.topAnchor, constant: 0)
+			])
+
+		case .bottom:
+			NSLayoutConstraint.activate([
+				bottomAnchor.constraint(equalTo: superview.layoutMarginsGuide.bottomAnchor, constant: 0)
+			])
+		}
         
         addSubviewConstraints()
         style()
